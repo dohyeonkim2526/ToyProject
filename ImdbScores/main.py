@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import pymysql
 import mysql_connect # mysql 접속정보
-from sqlalchemy import create_engine
 
 login = mysql_connect.info
 
