@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import pymysql
+import sys
+sys.path.insert(0, './ImdbScores') # mysql 접속정보 저장한 폴더경로 연결
 import mysql_connect # mysql 접속정보
 
 login = mysql_connect.info
