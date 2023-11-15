@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Film Information</title>
+</head>
+<body>
+    <h1>Film Information</h1>
+    <p>Imdb 평점이 높은 순의 영화 리스트</p>
+    <table border = "1">
+        <tr>
+            <th>제목</th>
+            <th>개봉년도</th>
+            <th>연령</th>
+            <th>러닝타임</th>
+            <th>언어</th>
+            <th>imdb평점</th>
+            <th>장르(1)</th>
+            <th>장르(2)</th>
+            <th>장르(3)</th>
+            <th>장르(4)</th>
+        </tr>
+        {% for film in films %}
+        <tr>
+            <td><a href="{{ url_for('show_film', imdb_code=film[0]) }}">{{ film[1] if film[1] is not none else '' }}</a></td>
+            <td>{{ film[2] if film[2] is not none else '' }}</td>
+            <td>{{ film[3] if film[3] is not none else '' }}</td>
+            <td>{{ film[4] if film[4] is not none else '' }}</td>
+            <td>{{ film[5] if film[5] is not none else '' }}</td>
+            <td>{{ film[6] if film[6] is not none else '' }}</td>
+            <td>{{ film[7] if film[7] is not none else '' }}</td>
+            <td>{{ film[8] if film[8] is not none else '' }}</td>
+            <td>{{ film[9] if film[9] is not none else '' }}</td>
+            <td>{{ film[10] if film[10] is not none else '' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% if page_number > 1 %}
+        <a href="?page={{ page_number - 1 }}">이전페이지</a>
+    {% endif %}
+    <a href="?page={{ page_number + 1 }}">다음페이지</a>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {% for f in film %}
+  <tr>
+    <td>{{ f[1] }} </td>
+    <td>
+      {% if f[2] %}
+        <img src="{{ f[2] }}" alt="Film Poster" style="width:250px;height:350px;">
+      {% else %}
+        No Image Available
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</body>
+</html>
