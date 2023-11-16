@@ -3,41 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Film Information</title>
+    <style>
+        .table {
+            border-collapse: collapse;              /*단일테두리*/
+            margin: 0 auto;                         /*가운데정렬*/
+        }
+        .table th {
+            background-color: #cee3f6;              /*표제목색상*/
+        }
+        .table tr:nth-child(odd) {                   /*홀수번에만 색상추가*/
+            background-color: #eff2fb;
+        }
+        .table th, .table td {
+            padding: 5px;                           /*셀내용과 경계사이 간격너비*/
+        }
+        h1, h3 {
+            text-align:center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Film Information</h1>
-    <p>Imdb 평점이 높은 순의 영화 리스트</p>
-    <table border = "1">
+    <h1 style="font-family:Arial;">Film Information</h1>
+    <h3 style="font-family:굴림;"><mark><i>Imdb 평점이 높은 순</mark>의 영화 리스트</i></h3>
+    <!--<table border = "1">-->
+    <table class = "table" border = "1" >
         <tr>
-            <th>제목</th>
-            <th>개봉년도</th>
-            <th>연령</th>
-            <th>러닝타임</th>
-            <th>언어</th>
-            <th>imdb평점</th>
-            <th>장르(1)</th>
-            <th>장르(2)</th>
-            <th>장르(3)</th>
-            <th>장르(4)</th>
+            <th nowrap>제목</th> <!--nowrap:줄바꿈방지-->
+            <th nowrap>개봉년도</th>
+            <th nowrap>연령</th>
+            <th nowrap>러닝타임</th>
+            <th nowrap>언어</th>
+            <th nowrap>imdb평점</th>
+            <th nowrap>장르(1)</th>
+            <th nowrap>장르(2)</th>
+            <th nowrap>장르(3)</th>
+            <th nowrap>장르(4)</th>
         </tr>
         {% for film in films %}
-        <tr>
-            <td><a href="{{ url_for('show_film', imdb_code=film[0]) }}">{{ film[1] if film[1] is not none else '' }}</a></td>
-            <td>{{ film[2] if film[2] is not none else '' }}</td>
-            <td>{{ film[3] if film[3] is not none else '' }}</td>
-            <td>{{ film[4] if film[4] is not none else '' }}</td>
-            <td>{{ film[5] if film[5] is not none else '' }}</td>
-            <td>{{ film[6] if film[6] is not none else '' }}</td>
-            <td>{{ film[7] if film[7] is not none else '' }}</td>
-            <td>{{ film[8] if film[8] is not none else '' }}</td>
-            <td>{{ film[9] if film[9] is not none else '' }}</td>
-            <td>{{ film[10] if film[10] is not none else '' }}</td>
+        <tr> <!--MysqlData로 표 보여주기-->
+            <td nowarp><a href="{{ url_for('show_film', imdb_code=film[0]) }}">{{ film[1] if film[1] is not none else '' }}</a></td> <!--표의 영화title 누르면 세부정보 페이지로 연결-->
+            <td nowarp>{{ film[2] if film[2] is not none else '' }}</td>
+            <td nowrap>{{ film[3] if film[3] is not none else '' }}</td>
+            <td nowrap>{{ film[4] if film[4] is not none else '' }}</td>
+            <td nowrap>{{ film[5] if film[5] is not none else '' }}</td>
+            <td nowrap>{{ film[6] if film[6] is not none else '' }}</td>
+            <td nowrap>{{ film[7] if film[7] is not none else '' }}</td>
+            <td nowrap>{{ film[8] if film[8] is not none else '' }}</td>
+            <td nowrap>{{ film[9] if film[9] is not none else '' }}</td>
+            <td nowrap>{{ film[10] if film[10] is not none else '' }}</td>
         </tr>
         {% endfor %}
     </table>
-    {% if page_number > 1 %}
-        <a href="?page={{ page_number - 1 }}">이전페이지</a>
-    {% endif %}
-    <a href="?page={{ page_number + 1 }}">다음페이지</a>
+    <span style="line-height:50%"><br></span>
+    <div style="text-align: center;"> <!--페이지버튼 가운데정렬-->
+        {% if page_number > 1 %}
+            <a href="?page={{ page_number - 1 }}" style="padding: 5px 10px; background-color: #5882fa; text-decoration: none; color: white;">이전페이지</a> <!--이전 페이지로 넘어가는 기능(스타일적용)-->
+        {% endif %}
+        <a href="?page={{ page_number + 1 }}" style="padding: 5px 10px; background-color: #5882fa; text-decoration: none; color: white;">다음페이지</a> <!--다음 페이지로 넘어가는 기능(스타일적용)-->
+    </div>
 </body>
 </html>

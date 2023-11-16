@@ -28,5 +28,6 @@ https://www.kaggle.com/datasets/luiscorter/netflix-original-films-imdb-scores
 
 ## 
 #### [2023.11 ~] 맵핑이 완료되어 맵핑된 코드값을 가지고 IMDB 사이트의 나라별 평점을 수집하고 시각화 진행(with Flask)
-* 과제1 - Flask 시각화 진행 (ImdbDB.imdb_score.imdb 코드값을 가지고 영화 정보 테이블의 데이터를 가져와서 '영화정보+포스터+나라별 평점' 시각화해보기)
+* 과제1 - Flask 시각화 진행 (나라별 평점 -> 데이터별로 그래프 만들어서 보여주는 방법으로 고쳐보기, 지금은 png -> 연동하는 방식이어서 차트가 바뀌지 않음)
+  * 해결 - 영화 세부 정보를 가진 테이블 JOIN해서 영화 정보 + Json + 포스터 이미지를 가진 테이블 CTAS로 생성
 * 과제2 - 코드값 매핑을 위해 작성한 코드 리팩터링

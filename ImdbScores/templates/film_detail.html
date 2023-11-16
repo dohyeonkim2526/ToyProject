@@ -2,20 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+      <title>Film Information</title>
+      <style>
+        h1, p {
+          text-align: center;
+        }
+        p {
+          font-size: 20px;
+        }
+        body {                        /*컨텐츠 가운데정렬*/
+          justify-content: center;
+          align-items: center;
+        }
+        img {
+          width: 600px;
+          height: 480px;
+          display: block;
+          margin: auto;
+        }
+      </style>
 </head>
-<body>
-  {% for f in film %}
-  <tr>
-    <td>{{ f[1] }} </td>
-    <td>
-      {% if f[2] %}
-        <img src="{{ f[2] }}" alt="Film Poster" style="width:250px;height:350px;">
-      {% else %}
-        No Image Available
-      {% endif %}
-    </td>
+<body bgcolor="#f2f2f2">
+  {% for fm in film %} <!--Mysql로부터 가져온 Data-->
+  <h1 style="font-family: Arial; font-size: 28px;">{{ fm[1] }}</h1>
+  <br></br>
+    <tr>
+      <td>
+        {% if fm[6] %}
+          <center>
+            <img src="{{ fm[6] }}" alt="Film Poster" style="width:250px;height:350px;"> <!--Poster img, 중앙정렬-->
+          </center>
+        {% else %}
+          No Image Available
+        {% endif %}
+      </td>
+      <p><b>[개봉년도]</b> {{ fm[2] if fm[2] is not none else '-' }}</p> <!--개봉년도데이터-->
+      <p><b>[시청연령]</b> {{ fm[3] if fm[3] is not none else '-' }}</p> <!--시청연령데이터-->
+      <p><b>[언어]</b> {{ fm[4] if fm[4] is not none else '-' }}</p> <!--언어데이렬-->
   </tr>
+  <br></br>
   {% endfor %}
+  <!--  Python Box Charts: Rates of countries-->
+  <div>
+    {% if chart_image %}
+    <img src="{{ url_for('static', filename='rate_chart.png') }}">
+    {% else %}
+    <p>There is no rating information on the IMDB site</p>
+    {% endif %}
+  </div>
 </body>
 </html>
