@@ -14,17 +14,17 @@ ___
 ### [Film page] - 프로젝트 결과물
 **1. 메인화면** - Flask를 이용하여 DB로부터 영화정보를 가져와서 보여주는 페이지
 
-<img src="./result/mainPage.png"/>
+<kbd> <img src="./result/mainPage.png"/> </kbd>
 
 <br></br>
 **2. 메인화면** - 페이지를 넘기면서 영화정보를 볼 수 있고, 영화 제목을 누르면 상세페이지로 넘어간다
 
-<img src="./result/mainPage2.png"/>
+<kbd> <img src="./result/mainPage2.png"/> </kbd>
 
 <br></br>
 **3. 상세페이지** - 해당 영화의 포스터 및 세부정보와 나라별 영화 평점을 보여주는 페이지( `Imdb_code`를 이용하여 DB로부터 데이터를 가져온다)  
 
-<img src="./result/filmInfoPage.png"/>
+<kbd> <img src="./result/filmInfoPage.png"/> </kbd>
 
 <br></br>
 <br></br>
@@ -32,8 +32,25 @@ ___
 ___
 ###
 
+### [동작원리]
+<details>
+<summary>동작원리에 대하여</summary>
+
+* `step1` - Netflix 영화정보를 가지고 Imdb 사이트에서 해당 영화에 대한 페이지를 찾는다.
+* `step2` - 영화 세부 정보를 비교하며 동일한 영화인지 확인하고, 동일하다면 Netflix 영화에 대해 Imdb_code를 맵핑한다.
+* `step3` - 맵핑된 Imdb_code를 이용하여 Imdb 사이트에서의 포스터 이미지와 평점 json data를 수집한다.
+* `step4` - Netflix 영화정보와 수집한 내용을 조인하여 Flask에서 사용할 메인 테이블을 생성한다.
+* `step5` - Flask를 이용하여 MysqlDB에 저장된 데이터를 가져와서 화면에 보여준다.
+    * (main page) 전체 영화 리스트를 테이블 형식으로 보여준다
+    * (sub page) 영화별 포스터 이미지와 나라별 평점 차트를 보여준다
+
+</details>
 <br></br>
+
 ### [개발과정]
+<details>
+<summary>개발과정에 대하여</summary>
+
 #### (2023.09 ~ 2023.11) 넷플릭스 영화 제목을 가지고 IMDB 사이트의 코드값 맵핑
 * 과제1 - 영화명이 영문이 아니거나 특수문자가 포함된 경우에 대해 전처리
   * 해결 - Google에 검색해서 나오는 IMDB 영화 서칭
@@ -62,5 +79,6 @@ ___
 
 * 과제2 - 코드값 매핑을 위해 작성한 코드 리팩터링
 
-#
+</details>
 
+<br></br>
