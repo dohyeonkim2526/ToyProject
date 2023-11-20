@@ -7,18 +7,12 @@ IMDB 사이트의 평점이 계속 업데이트된다는 것을 이용하여 보
 사용 데이터셋: Kaggle [[Netflix Original Films & IMDB Scores](https://www.kaggle.com/datasets/luiscorter/netflix-original-films-imdb-scores)]
 
 
-##
+<br></br>
+
 ___
 
 ### [Film page] - 프로젝트 결과물
 **1. 메인화면** - Flask를 이용하여 DB로부터 영화정보를 가져와서 보여주는 페이지
-
-<style>
-        img {
-          width: 800px;
-          height: 680px;
-        }
-</style>
 
 <img src="./result/mainPage.png"/>
 
@@ -32,12 +26,13 @@ ___
 
 <img src="./result/filmInfoPage.png"/>
 
-#
-##
+<br></br>
+<br></br>
 
 ___
-
 ###
+
+<br></br>
 ### [개발과정]
 #### (2023.09 ~ 2023.11) 넷플릭스 영화 제목을 가지고 IMDB 사이트의 코드값 맵핑
 * 과제1 - 영화명이 영문이 아니거나 특수문자가 포함된 경우에 대해 전처리
