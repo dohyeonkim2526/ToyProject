@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
       <title>Film Information</title>
+      <!--스타일 옵션 설정-->
       <style>
         h1, p {
           text-align: center;
@@ -30,25 +31,25 @@
       <td>
         {% if fm[6] %}
           <center>
-            <img src="{{ fm[6] }}" alt="Film Poster" style="width:250px;height:350px;"> <!--Poster img, 중앙정렬-->
+            <img src="{{ fm[6] }}" alt="Film Poster" style="width:250px;height:350px;"> <!--Poster image 가져오기-->
           </center>
         {% else %}
-          No Image Available
+          <p>No Image Available</p>
         {% endif %}
-      </td>
-      <p><b>[개봉년도]</b> {{ fm[2] if fm[2] is not none else '-' }}</p> <!--개봉년도데이터-->
-      <p><b>[시청연령]</b> {{ fm[3] if fm[3] is not none else '-' }}</p> <!--시청연령데이터-->
-      <p><b>[언어]</b> {{ fm[4] if fm[4] is not none else '-' }}</p> <!--언어데이렬-->
+    </td>
+    <p><b>[개봉년도]</b> {{ fm[2] if fm[2] is not none else '-' }}</p> <!--개봉년도데이터-->
+    <p><b>[시청연령]</b> {{ fm[3] if fm[3] is not none else '-' }}</p> <!--시청연령데이터-->
+    <p><b>[언어]</b> {{ fm[4] if fm[4] is not none else '-' }}</p> <!--언어데이렬-->
+    <!--  Python Box Charts: Rates of countries-->
+    <div>
+      {% if chart_image %}
+        <img src="{{ url_for('static', filename=chart_image) }}"> <!--영화평점시각화 이미지 가져오기-->
+      {% else %}
+        <p>No Rates Info Available</p>
+      {% endif %}
+    </div>
   </tr>
   <br></br>
   {% endfor %}
-  <!--  Python Box Charts: Rates of countries-->
-  <div>
-    {% if chart_image %}
-    <img src="{{ url_for('static', filename='rate_chart.png') }}">
-    {% else %}
-    <p>There is no rating information on the IMDB site</p>
-    {% endif %}
-  </div>
 </body>
 </html>
